@@ -15,17 +15,17 @@ class extrema:
         self.b = b
         
     def roots(self):
-        root = sp.optimize.brentq(self.f,self.a,self.b)
+        root = sp.optimize.brentq(self.f,self.a,self.b,args=(), xtol=1e-12, rtol=4.4408920985006262e-16, maxiter=100, full_output=True, disp=True)
         n = 100
         x = sp.linspace(self.a,self.b,n)
         func = sp.zeros(n)
         for i in range(0,n):
             func[i] = self.f(x[i])
 
-        plt.plot(root,0, 'ro')
+        plt.plot(root[0],0, 'ro')
         plt.axhline(y=0)
         plt.plot(x,func)
-        print("root between x1 = {0:6.4f} and x2 = {1:6.4f} is at xr = {2:6.4f}".format(self.a,self.b,root))
+        print("root between x1 = {0:8.5f} and x2 = {1:8.5f} is at x = {2:8.5f}".format(self.a,self.b,root[0]))
         return root
 
 
