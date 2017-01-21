@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
 """
+Created on Sat Jan 21 15:52:47 2017
+
+@author: danieljc
+"""
+
+# -*- coding: utf-8 -*-
+"""
 Created on Fri Jan 20 23:08:12 2017
 
 @author: Jens
@@ -8,18 +15,23 @@ Created on Fri Jan 20 23:08:12 2017
 import scipy as sp
 
 class primary(object):
-    def __init__(self,gpmt,tin,p,qt):
+    def __init__(self,corbyp,gpmt,na,nin,non,p,qt,tin,tsbyp,ttb,title):
+        self.corbyp = corbyp
         self.gpmt = gpmt
-        self.tin = tin
-        self.qt = qt
+        self.na = na
+        self.nin = nin
+        self.non = non
         self.p = p
+        self.qt = qt
+        self.tin = tin
+        self.tsbyp = tsbyp
+        self.ttb = ttb
+        self.title = title
         self.dens = 0.02711 # Needs to call density from a steam table
         self.w = sp.zeros(len(self.gpmt))
         
         for i in range(0,len(self.gpmt)):
             self.w[i] = self.dens*self.gpmt[i]*60/7.48
-        
-        
         
     def echo(self):
         print("THERMAL DESIGN FLOW    (TDF) = {} [gpm]".format(self.gpmt[0]))
